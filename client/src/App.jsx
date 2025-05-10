@@ -69,18 +69,6 @@ function App() {
   useEffect(() => {    
   }, [listenSpeach]);
 
-
-
-
-  const VoiceToText = ()=>{
-    if (!browserSupportsSpeechRecognition) {
-      return <p>Браузер не поддерживает Speech Recognition.</p>;
-    }  else {()=>setTextResult(transcript)}
-  
-  }
-
-
-
   return (
     <div className='app'>
       <div className="top">
@@ -90,7 +78,7 @@ function App() {
       <div className="app-content">
         <div className="content-title">
           <h2>What would you like to know?</h2>
-          {reply?null:<p>Use one of the ost common props to bellow or ask your own question</p>}
+          {reply?null:<p>Use one of the most common props to bellow or ask your own question</p>}
           
         </div>
         <div className="answer-block">
@@ -110,7 +98,7 @@ function App() {
             />
             {listenSpeach?<p className='listening-text'>Listening...</p>:null}
             {error?<p className='error-text'>{error}</p>:null}
-
+            {!browserSupportsSpeechRecognition?<p>Браузер не поддерживает Speech Recognition.</p>:()=>setTextResult(transcript)}
 
             <Button 
               imgSource={microIcon}
